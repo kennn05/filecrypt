@@ -30,8 +30,10 @@ encrypt_file() {
 
   if [ $? -eq 0 ]; then
     echo "File encrypted successfully: $output_file"
+    exit 1
   else
     echo "Error encrypting the file."
+    exit 1
   fi
 }
 
@@ -55,8 +57,10 @@ decrypt_file() {
 
   if [ $? -eq 0 ]; then
     echo "File decrypted successfully: $output_file"
+    exit 1
   else
     echo "Error decrypting the file. Please check the password."
+    exit 1
   fi
 }
 
