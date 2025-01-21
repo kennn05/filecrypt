@@ -1,9 +1,29 @@
 #!/bin/bash
 clear
+RED='\033[0;31m'
+GREEN='\033[1;92m'
+NC='\033[0m'
+
+echo -e """${RED}
+     .--------.       
+    / .------. \       
+   / /        \ \    
+   | |        | |     
+  _| |________| |_    
+.' |_|        |_| '.
+'._____ ____ _____.'
+|     .'____'.     |
+'.__.'.'    '.'.__.'
+'.__  |CRYPTO|   _.'
+|   '.'.____.'.'   |
+'.____'.____.'____.'
+'.________________.'"""
 echo ""
-ls
-echo "
-"
+echo "Coded by Ken"
+echo -e "------------------------------------${NC}"
+ls 
+echo -e "${RED}------------------------------------"
+echo ""
 # Check if OpenSSL is installed
 if ! command -v openssl &> /dev/null; then
   echo "Error: OpenSSL is not installed. Please install it and try again."
@@ -31,15 +51,18 @@ encrypt_file() {
 
   output_file="${input_file}.enc"
   read -sp "Enter password: " password
-  echo
+  echo ""
   openssl enc -aes-256-cbc -salt -in "$input_file" -out "$output_file" -pass pass:"$password" >/dev/null 2>&1
 
   if [ $? -eq 0 ]; then
   	echo ""
-    echo "File encrypted successfully: $output_file"
+    echo -e "${GREEN}File Encrypted successfully -> $output_file"
+	echo ""
     exit 1
   else
+    echo ""
     echo "Error encrypting the file."
+    echo ""
     exit 1
   fi
 }
@@ -53,20 +76,26 @@ decrypt_file() {
   fi
 
   if [[ "$input_file" != *.enc ]]; then
+	echo ""
     echo "Error: Input file does not have .enc extension. Cannot decrypt."
+	echo ""
     exit 1
   fi
 
   output_file="${input_file%.enc}"
   read -sp "Enter password: " password
-  echo
+  echo ""
   openssl enc -aes-256-cbc -d -salt -in "$input_file" -out "$output_file" -pass pass:"$password" >/dev/null 2>&1
 
   if [ $? -eq 0 ]; then
-    echo "File decrypted successfully: $output_file"
+    echo ""
+    echo -e "${GREEN}File Decrypted successfully -> $output_file"
+    echo ""
     exit 1
   else
+    echo ""
     echo "Error decrypting the file. Please check the password."
+	echo ""
     exit 1
   fi
 }
