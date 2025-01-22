@@ -22,6 +22,9 @@ banner() {
   '.________________.'"""
  	echo ""
     echo "Coded by JENERAL"
+    echo -e "------------------------------------"
+    echo -e "${YELLOW} ⚠️ This tool leverages advanced AES encryption to secure your files, making them virtually impossible to crack. Use it at your own risk.
+     ⚠️ 该工具采用先进的 AES 加密技术来保护您的文件，使其几乎无法破解。请自行承担使用风险。${RED}"
     echo -e "------------------------------------${NC}"
     ls -p --color=never | grep -v '/$' | xargs -I {} echo -e "\e[33m{}\e[0m"
     echo -e "${RED}------------------------------------"
