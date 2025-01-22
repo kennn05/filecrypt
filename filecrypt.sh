@@ -110,7 +110,7 @@ decrypt_file() {
 # Main program
 while true; do
   display_menu
-  read -p "Enter your choice: " choice
+  read -p "Crypto:~>  " choice
   case $choice in
     1)
       encrypt_file
