@@ -1,10 +1,10 @@
 \#!/bin/bash
-clear
 RED='\033[0;31m'
 GREEN='\033[1;92m'
 NC='\033[0m'
 
 banner() { 
+	clear
 	echo -e """${RED}                             
                                 
        .--------.                 
@@ -30,6 +30,7 @@ banner() {
 # Check if OpenSSL is installed
 if ! command -v openssl &> /dev/null; then
   echo "Error: OpenSSL is required for this script. Install it using your package manager."
+  pkg install openssl-tool
   exit 1
 fi
 
