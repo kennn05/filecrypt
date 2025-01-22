@@ -23,7 +23,7 @@ banner() {
  	echo ""
     echo "Coded by JENERAL"
     echo -e "------------------------------------${NC}"
-    ls -pA | grep -v '/$'
+    ls -p --color=never | grep -v '/$' | xargs -I {} echo -e "\e[33m{}\e[0m"
     echo -e "${RED}------------------------------------"
 }
 
