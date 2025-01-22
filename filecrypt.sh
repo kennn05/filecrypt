@@ -23,7 +23,7 @@ banner() {
  	echo ""
     echo "Coded by JENERAL"
     echo -e "------------------------------------${NC}"
-    ls 
+    ls -pA | grep -v '/$'
     echo -e "${RED}------------------------------------"
 }
 
